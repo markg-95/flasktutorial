@@ -41,3 +41,15 @@ Traceback (most recent call last):
   File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/wtforms/form.py", line 208, in __call__
     return type.__call__(cls, *args, **kwargs)
 TypeError: __init__() missing 1 required positional argument: 'original_username'
+2021-02-24 20:26:29,467 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:52]
+2021-02-26 09:10:43,345 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:52]
+2021-02-26 10:29:21,089 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:52]
+2021-02-26 10:29:40,929 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:52]
+2021-02-26 10:30:00,190 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:52]
+2021-02-26 10:30:15,518 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:52]
+2021-02-26 10:30:45,558 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:52]
+2021-02-26 10:39:22,347 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:52]
+2021-02-26 10:40:55,323 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:52]
+2021-02-26 10:41:44,089 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:52]
+2021-02-26 11:20:10,418 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:52]
+2021-02-26 11:20:35,083 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:52]
