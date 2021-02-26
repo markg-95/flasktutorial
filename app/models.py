@@ -90,7 +90,7 @@ class User(UserMixin, db.Model):
         Below we are encoding the lower-cased email as bytes and requesting an avatar
         from gravatar.
         '''
-        return 'http://www.gravatar.com/avatar/%s?d=mm&s=%d' % (md5(self.email.encode('utf-8')).hexdigest(), size)
+        return 'https://www.gravatar.com/avatar/%s?d=identicon&s=%d' % (md5(self.email.encode('utf-8')).hexdigest(), size)
 
     '''
     Implement following and unfollowing other users.
@@ -103,6 +103,7 @@ class User(UserMixin, db.Model):
             self.followed.remove(user)
     def is_following(self, user):
         return self.followed.filter(followers.c.followed_id==user.id).count() > 0
+
 
 @login.user_loader
 def load_user(id):
