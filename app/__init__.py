@@ -7,6 +7,8 @@ import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 
+# 
+
 app = Flask(__name__)
 app.config.from_object(Config) # config class stores our app's configuration variables.
 db = SQLAlchemy(app) # SQL database
@@ -16,7 +18,7 @@ login.login_view = 'login' #
 
 from app import routes, models, errors
 
-
+# Error handling
 if not app.debug:
     """
     Send emails to admins when a bug occurs on the sight.
@@ -50,4 +52,3 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
-    

@@ -65,12 +65,11 @@ class User(UserMixin, db.Model):
         Then, we want to include (union in) our own posts into the timeline.
         So we find our posts and union them with the followed posts.
         Finally, we order by descending order of timestamp.
-
         """
         just_followed_posts = Post.query.join(
         followers, (followers.c.followed_id==Post.user_id)).filter(
         followers.c.follower_id==self.id)
-        own_posts = Post.query.filter(user_id==self.id)
+        own_posts = Post.query.filter_by(user_id=self.id)
         return just_followed_posts.union(own_posts).order_by(Post.timestamp.desc())
 
     def __repr__(self):
@@ -91,8 +90,7 @@ class User(UserMixin, db.Model):
         Below we are encoding the lower-cased email as bytes and requesting an avatar
         from gravatar.
         '''
-        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
-        return 'https://www.gravatar.com/avatar/{}?=identicon&s={}'.format(digest, size)
+        return 'http://www.gravatar.com/avatar/%s?d=mm&s=%d' % (md5(self.email.encode('utf-8')).hexdigest(), size)
 
     '''
     Implement following and unfollowing other users.
@@ -104,7 +102,7 @@ class User(UserMixin, db.Model):
         if self.is_following(user):
             self.followed.remove(user)
     def is_following(self, user):
-        return self.followed(filter(followers.c.followerd_id==user.id)).count() > 0
+        return self.followed.filter(followers.c.followed_id==user.id).count() > 0
 
 @login.user_loader
 def load_user(id):
