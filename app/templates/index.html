@@ -23,6 +23,16 @@ explore page.
     </form>
     {% endif %}
     {% for post in posts %}
+      <!-- display the post according to this sub-template. -->
       {% include '_post.html' %}
     {% endfor %}
+    <!-- we're using pagination. the flags below come from the
+    posts (query) object. -->
+    {% if prev_url %}
+    <a href="{{ prev_url }}">Newer posts</a>
+    {% endif %}
+    {% if next_url %}
+    <a href="{{ next_url }}">Older posts</a>
+    {% endif %}
+
 {% endblock %}

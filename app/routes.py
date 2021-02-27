@@ -41,20 +41,29 @@ def index():
 		The reason why we're redirecting back to this page is to follow the
 		post/redirect/get pattern.
 		After making a 'post' request, we should redirect always. This prevents
-		confusing / unexpected behaviour such as when a user refreshes a page and
-		the post request is made twice, prompting a warning message. Redirecting
-		causes a 'get' request, avoiding the duplicate-post issue.
+		confusing / unexpected behaviour such as a user refreshing a page and
+		the most recent post request being made twice, prompting a warning message. Redirecting
+		The redirect forces a 'get' request, thwarting the duplicate-post issue.
+
+		Pagination: This involves querying for and generating a subset of all
+		values of interest from the data base. (i.e. Don't display 1,000,000
+		posts, display the latest 20.)
+		paginate(page #, # of values to get, True if you want error, False if
+		you want [])
+		From the above query object, .items returns the list of elements.
+		Below, we see other helpful uses in determining whether there are more
+		pages to display.
 		"""
-	page = request.args.get('page', 1, type=int) # query url string for 'page'
+	page = request.args.get('page', 1, type=int)
 	posts = current_user.followed_posts().paginate(
 		page, app.config['POSTS_PER_PAGE'], False)
-		"""
-		Pagination: This is querying for a subset of all values of interest from the
-		data base.
-		paginate(page #, number of values from db to use, flag to return error (true)
-		or empty list (false) when we request a value out of range)
-		"""
-	return render_template('index.html',title='Home',form=form, posts=posts.items)
+	next_url = url_for('index', page=posts.next_num) \
+		if posts.has_next else None
+	prev_url = url_for('index', page=posts.prev_num) \
+		if posts.has_prev else None
+	return render_template('index.html', title='Home', form=form,
+		posts=posts.items, next_url=next_url,
+		prev_url=prev_url)
 
 # explore page
 @app.route('/explore')
@@ -63,13 +72,18 @@ def explore():
 	"""
 	Renders the index.html template. On this page we see posts from all users
 	so that users can discover new users.
-	Pagination: see 'index() above'.
+	For details on pagination, see 'index()' above.
 	"""
-	page = request.args.get('page',1,type=int)
-	posts = Post.query.order_by(Post.timestamp.desc()).paginate(
+	page = request.args.get('page', 1, type=int)
+	posts = current_user.followed_posts().paginate(
 		page, app.config['POSTS_PER_PAGE'], False)
-	)
-	return render_template('index.html', title='Explore', posts=posts.items)
+	next_url = url_for('index', page=posts.next_num) \
+		if posts.has_next else None
+	prev_url = url_for('index', page=posts.prev_num) \
+		if posts.has_prev else None
+	return render_template('index.html', title='Home',
+		posts=posts.items, next_url=next_url,
+		prev_url=prev_url)
 
 # login page
 @app.route('/login', methods=['GET','POST'])
@@ -120,12 +134,24 @@ def register():
 @login_required
 def user(username):
 	user = User.query.filter_by(username=username).first_or_404()
-	posts = [
-		{'author': user, 'body': 'Test post #1'},
-		{'author': user, 'body': 'Test post #2'}
-	]
+	page = request.args.get('page', 1, type=int) #query string, default, type
+	posts = user.posts.order_by(Post.timestamp.desc()).paginate(
+		page, app.config['POSTS_PER_PAGE'], False)
+	next_url = url_for('user', username=user.username, page=posts.next_num) \
+		if posts.has_next else None
+	prev_url = url_for('user', username=user.username, page=posts.prev_num) \
+	if posts.has_prev else None
+	'''
+	note, above we use url_for to pass extra arguments.
+	username specifies the user whose profile page we're targetting.
+	the page argument is used in this function to determine which of
+	this user's posts should be displayed (pagination).
+
+	below, if we're viewing someone else's profile, form serves as the
+	follow/unfollow button.
+	'''
 	form = EmptyForm()
-	return render_template('user.html',user=user,posts=posts,form=form)
+	return render_template('user.html',user=user,posts=posts.items,form=form)
 
 from app.forms import EditProfileForm
 
