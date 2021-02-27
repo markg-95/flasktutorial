@@ -65,6 +65,13 @@ class User(UserMixin, db.Model):
         Then, we want to include (union in) our own posts into the timeline.
         So we find our posts and union them with the followed posts.
         Finally, we order by descending order of timestamp.
+
+        The object returned is a SQLAlchemy query object.
+        When calling this function, we should immediately call a method like
+        all() or first() to get a list of the objects we expect returned.
+
+        ex. from '/index' route:
+        posts = current_user.followed_posts().all()
         """
         just_followed_posts = Post.query.join(
         followers, (followers.c.followed_id==Post.user_id)).filter(

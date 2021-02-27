@@ -89,3 +89,5 @@ WHERE followers.follower_id = ? AND followers.followed_id = user.id AND follower
 2021-02-26 16:33:38,244 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:54]
 2021-02-26 16:36:08,360 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:54]
 2021-02-26 16:36:15,925 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:54]
+2021-02-26 18:22:43,175 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:54]
+2021-02-26 18:24:06,835 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:54]

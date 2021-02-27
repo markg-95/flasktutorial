@@ -1,14 +1,15 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EmptyForm
+from app.forms import LoginForm, RegistrationForm, EmptyForm, PostForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
 
 '''
-this file contains our app\'s view functions.
-these are functions that get mapped to URLs.
+This file contains our app\'s view functions.
+These are functions that get mapped to URLs.
+They update the contents of html pages when we call render_template(...).
 '''
 
 
@@ -24,11 +25,51 @@ def before_request():
 		db.session.commit()
 
 # home page
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET','POST'])
+@app.route('/index', methods=['GET','POST'])
 @login_required # decorator used by Flask-Login to ensure a user must be logged in to view this page
 def index():
-	return render_template('index.html',title='Home')
+	# making a post
+	form=PostForm()
+	if form.validate_on_submit():
+		post = Post(body=form.post.data, author=current_user)
+		db.session.add(post)
+		db.session.commit()
+		flash('Your post is now live!')
+		return redirect(url_for('index'))
+		"""
+		The reason why we're redirecting back to this page is to follow the
+		post/redirect/get pattern.
+		After making a 'post' request, we should redirect always. This prevents
+		confusing / unexpected behaviour such as when a user refreshes a page and
+		the post request is made twice, prompting a warning message. Redirecting
+		causes a 'get' request, avoiding the duplicate-post issue.
+		"""
+	page = request.args.get('page', 1, type=int) # query url string for 'page'
+	posts = current_user.followed_posts().paginate(
+		page, app.config['POSTS_PER_PAGE'], False)
+		"""
+		Pagination: This is querying for a subset of all values of interest from the
+		data base.
+		paginate(page #, number of values from db to use, flag to return error (true)
+		or empty list (false) when we request a value out of range)
+		"""
+	return render_template('index.html',title='Home',form=form, posts=posts.items)
+
+# explore page
+@app.route('/explore')
+@login_required
+def explore():
+	"""
+	Renders the index.html template. On this page we see posts from all users
+	so that users can discover new users.
+	Pagination: see 'index() above'.
+	"""
+	page = request.args.get('page',1,type=int)
+	posts = Post.query.order_by(Post.timestamp.desc()).paginate(
+		page, app.config['POSTS_PER_PAGE'], False)
+	)
+	return render_template('index.html', title='Explore', posts=posts.items)
 
 # login page
 @app.route('/login', methods=['GET','POST'])
@@ -124,7 +165,6 @@ def follow(username):
         return redirect(url_for('user', username=username))
     else:
         return redirect(url_for('index'))
-
 
 @app.route('/unfollow/<username>', methods=['POST'])
 @login_required
