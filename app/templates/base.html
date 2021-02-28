@@ -5,6 +5,7 @@ We're using 3 bootstrap blocks here...
 1) title
 2) navbar
 3) content
+4) scripts
  -->
 
 {% block title %}
@@ -40,4 +41,9 @@ We're using 3 bootstrap blocks here...
         {# application content needs to be provided in the app_content block #}
         {% block app_content %}{% endblock %}
     </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
 {% endblock %}

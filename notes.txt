@@ -1,7 +1,4 @@
 
-Left off at page navigation in Ch. 9
-
-
 Email simulation:
 During development we can use an emulated email server that Python provides.
 In the terminal (and inside our virtualenv) we run:

@@ -8,6 +8,7 @@ from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
+from flask_moment import Moment
 
 #
 
@@ -17,9 +18,9 @@ db = SQLAlchemy(app) # SQL database
 migrate = Migrate(app, db) # object for updating the database
 login = LoginManager(app) # used for logging users in/out, password hashing, etc.
 login.login_view = 'login' #
-mail = Mail() # email support
-mail.init_app(app)
-bootstrap = Bootstrap(app)
+mail = Mail(app) # email support
+bootstrap = Bootstrap(app) # bootstrap CSS framework
+moment = Moment(app) # implements moment.js
 
 
 
