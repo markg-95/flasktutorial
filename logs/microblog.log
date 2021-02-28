@@ -1,63 +1,38 @@
-2021-02-26 22:27:36,226 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:54]
-2021-02-26 22:27:54,934 ERROR: Exception on /user/marky [GET] [in /Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py:1891]
+2021-02-27 18:19:50,657 ERROR: Exception on /break_app [GET] [in /Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/markgetrost/Projects/FlaskMega/firstwebapp/app/routes.py", line 138, in user
-    posts = Post.query.filter_by(author=user.id).paginate(
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 1921, in filter_by
-    clauses = [
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 1922, in <listcomp>
-    _entity_descriptor(zero, key) == value
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/sqlalchemy/sql/operators.py", line 365, in __eq__
-    return self.operate(eq, other)
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/sqlalchemy/orm/attributes.py", line 226, in operate
-    return op(self.comparator, *other, **kwargs)
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/sqlalchemy/orm/relationships.py", line 1268, in __eq__
-    self.property._optimized_compare(
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/sqlalchemy/orm/relationships.py", line 1649, in _optimized_compare
-    raise sa_exc.ArgumentError(
-sqlalchemy.exc.ArgumentError: Mapped instance expected for relationship comparison to object.   Classes, queries and other SQL elements are not accepted in this context; for comparison with a subquery, use Post.author.has(**criteria).
-2021-02-26 22:27:56,171 ERROR: Exception on /user/marky [GET] [in /Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py:1891]
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 2097, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2021-02-27 18:23:38,930 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:58]
+2021-02-27 18:24:08,237 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:58]
+2021-02-27 18:28:48,878 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:58]
+2021-02-27 18:34:47,031 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:58]
+2021-02-27 18:36:45,934 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:58]
+2021-02-27 18:36:52,229 ERROR: Exception on /break_app [GET] [in /Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/markgetrost/Projects/FlaskMega/firstwebapp/app/routes.py", line 138, in user
-    posts = Post.query.filter_by(author=user.id).paginate(
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 1921, in filter_by
-    clauses = [
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/sqlalchemy/orm/query.py", line 1922, in <listcomp>
-    _entity_descriptor(zero, key) == value
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/sqlalchemy/sql/operators.py", line 365, in __eq__
-    return self.operate(eq, other)
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/sqlalchemy/orm/attributes.py", line 226, in operate
-    return op(self.comparator, *other, **kwargs)
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/sqlalchemy/orm/relationships.py", line 1268, in __eq__
-    self.property._optimized_compare(
-  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/sqlalchemy/orm/relationships.py", line 1649, in _optimized_compare
-    raise sa_exc.ArgumentError(
-sqlalchemy.exc.ArgumentError: Mapped instance expected for relationship comparison to object.   Classes, queries and other SQL elements are not accepted in this context; for comparison with a subquery, use Post.author.has(**criteria).
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 2097, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2021-02-27 18:37:16,388 ERROR: Exception on /break_app [GET] [in /Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 2097, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.

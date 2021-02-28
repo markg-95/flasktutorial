@@ -1,2 +1,29 @@
 
 Left off at page navigation in Ch. 9
+
+
+Email simulation:
+During development we can use an emulated email server that Python provides.
+In the terminal (and inside our virtualenv) we run:
+
+$ python -m smtpd -n -c DebuggingServer localhost:8025
+
+To use the above server, we set the following environment variables.
+$ export MAIL_SERVER=localhost
+export MAIL_PORT = 8025
+
+Running the following script sets up this emulated MAIL_SERVER
+$ ./emulate_email.sh
+(This should be done in a separate terminal tab.)
+
+Using gmail as our email server:
+$ export MAIL_SERVER=smtp.googlemail.com
+$ export MAIL_PORT=587
+$ export MAIL_USE_TLS = 1
+$ export MAIL_USERNAME=<your-gmail-username>
+$ export MAIL_PASSWORD=<your-gmail-password>
+
+We'll have to allow our gmail account to be used by 'less secure' apps if we
+go this route.
+The above solution worked. However, trying to do the export statements with a bash script
+fails. So I had to run the export statements above manually in the firstwebapp directory.

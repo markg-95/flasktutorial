@@ -25,6 +25,8 @@ This page is where user logs in.
   <p>{{form.remember_me()}} {{form.remember_me.label}}</p>
   <p>{{form.submit()}}</p>
   </form>
+  <p> Forgot Your Password? </p>
+  <a href="{{ url_for('reset_password_request') }}">Reset password.</a>
 
   <p> New User? <a href="{{ url_for('register') }}">Sign Up</a></p>
 {%endblock%}

@@ -58,6 +58,22 @@ class EditProfileForm(FlaskForm):
             if user is not None:
                 raise ValidationError('Please use a different username.')
 
+class ResetPasswordRequestForm(FlaskForm):
+    """
+    Form for sending a reset email request.
+    """
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Request Password Reset')
+
+class ResetPasswordForm(FlaskForm):
+    """
+    Form for changing a user's password.
+    """
+    password = PasswordField('Password', validators=[DataRequired()])
+    password2 = PasswordField(
+        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Request Password Reset')
+
 class EmptyForm(FlaskForm):
     """
     This is a button a user clicks to either follow or unfollow another user.
@@ -66,4 +82,4 @@ class EmptyForm(FlaskForm):
 
 class PostForm(FlaskForm):
     post = TextAreaField('Say something', validators=[DataRequired(), Length(min=1,max=140)])
-    submit = SubmitField('Submit')    
+    submit = SubmitField('Submit')

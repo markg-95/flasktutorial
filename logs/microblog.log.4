@@ -1,0 +1,110 @@
+2021-02-27 17:24:18,431 ERROR: Exception on /reset_password_request [POST] [in /Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask_mail.py", line 427, in send
+    connection.send(self)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask_mail.py", line 188, in send
+    self.host.sendmail(sanitize_address(envelope_from or message.sender),
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 856, in sendmail
+    self.ehlo_or_helo_if_needed()
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 604, in ehlo_or_helo_if_needed
+    if not (200 <= self.ehlo()[0] <= 299):
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 444, in ehlo
+    self.putcmd(self.ehlo_msg, name or self.local_hostname)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 371, in putcmd
+    self.send(str)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 363, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/markgetrost/Projects/FlaskMega/firstwebapp/app/routes.py", line 142, in reset_password_request
+    send_password_reset_email(user)
+  File "/Users/markgetrost/Projects/FlaskMega/firstwebapp/app/email.py", line 19, in send_password_reset_email
+    send_email('[Microblog] Reset Your Password',
+  File "/Users/markgetrost/Projects/FlaskMega/firstwebapp/app/email.py", line 15, in send_email
+    mail.send(msg)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask_mail.py", line 152, in __exit__
+    self.host.quit()
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 988, in quit
+    res = self.docmd("quit")
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 424, in docmd
+    self.putcmd(cmd, args)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 371, in putcmd
+    self.send(str)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 363, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+2021-02-27 17:25:58,885 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:57]
+2021-02-27 17:26:07,252 ERROR: Exception on /reset_password_request [POST] [in /Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask_mail.py", line 427, in send
+    connection.send(self)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask_mail.py", line 188, in send
+    self.host.sendmail(sanitize_address(envelope_from or message.sender),
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 856, in sendmail
+    self.ehlo_or_helo_if_needed()
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 604, in ehlo_or_helo_if_needed
+    if not (200 <= self.ehlo()[0] <= 299):
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 444, in ehlo
+    self.putcmd(self.ehlo_msg, name or self.local_hostname)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 371, in putcmd
+    self.send(str)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 363, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/markgetrost/Projects/FlaskMega/firstwebapp/app/routes.py", line 142, in reset_password_request
+    send_password_reset_email(user)
+  File "/Users/markgetrost/Projects/FlaskMega/firstwebapp/app/email.py", line 19, in send_password_reset_email
+    send_email('[Microblog] Reset Your Password',
+  File "/Users/markgetrost/Projects/FlaskMega/firstwebapp/app/email.py", line 15, in send_email
+    mail.send(msg)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask_mail.py", line 152, in __exit__
+    self.host.quit()
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 988, in quit
+    res = self.docmd("quit")
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 424, in docmd
+    self.putcmd(cmd, args)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 371, in putcmd
+    self.send(str)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/lib/python3.9/smtplib.py", line 363, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+2021-02-27 17:33:37,749 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:58]

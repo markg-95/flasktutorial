@@ -6,15 +6,19 @@ from flask_login import LoginManager
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
+from flask_mail import Mail
 
-# 
+#
 
-app = Flask(__name__)
+app = Flask(__name__) # our main application
 app.config.from_object(Config) # config class stores our app's configuration variables.
 db = SQLAlchemy(app) # SQL database
 migrate = Migrate(app, db) # object for updating the database
 login = LoginManager(app) # used for logging users in/out, password hashing, etc.
 login.login_view = 'login' #
+mail = Mail() # email support
+mail.init_app(app)
+
 
 from app import routes, models, errors
 
