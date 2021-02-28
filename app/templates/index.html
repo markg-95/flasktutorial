@@ -7,7 +7,7 @@ Further, we decide to only let the user post on the home page, and not the
 explore page.
  -->
 
-{% block content %}
+{% block app_content %}
     <h1>Hi, {{ current_user.username }}!</h1>
     {% if form %}
     <form action="" method="post">

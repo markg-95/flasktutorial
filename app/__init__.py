@@ -7,6 +7,7 @@ import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 from flask_mail import Mail
+from flask_bootstrap import Bootstrap
 
 #
 
@@ -18,6 +19,8 @@ login = LoginManager(app) # used for logging users in/out, password hashing, etc
 login.login_view = 'login' #
 mail = Mail() # email support
 mail.init_app(app)
+bootstrap = Bootstrap(app)
+
 
 
 from app import routes, models, errors

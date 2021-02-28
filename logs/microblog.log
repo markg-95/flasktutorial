@@ -36,3 +36,28 @@ Traceback (most recent call last):
   File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 2097, in make_response
     raise TypeError(
 TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2021-02-27 19:05:09,331 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:58]
+2021-02-27 19:05:24,466 ERROR: Exception on /break_app [GET] [in /Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 2097, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2021-02-27 19:06:44,157 ERROR: Exception on /break_app [GET] [in /Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 1968, in finalize_request
+    response = self.make_response(rv)
+  File "/Users/markgetrost/.pyenv/versions/3.9.0/envs/venv390/lib/python3.9/site-packages/flask/app.py", line 2097, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2021-02-27 19:57:44,946 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:61]
+2021-02-27 20:19:31,133 INFO: Microblog startup [in /Users/markgetrost/Projects/FlaskMega/firstwebapp/app/__init__.py:61]

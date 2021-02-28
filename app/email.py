@@ -1,18 +1,22 @@
 from flask_mail import Message
 from app import mail, app
 from flask import render_template
+from threading import Thread
+
+def send_async_email(app, msg):
+    with app.app_context():
+        mail.send(msg)
 
 def send_email(subject, sender, recipients, text_body, html_body):
     """
     Sends emails.
-    See notes.txt for setting up development test email server.
     See https://pythonhosted.org/Flask-Mail/ for more email options.
-    See __init__.py for establishing email server to be used by the app.
+    See __init__.py and notes.txt for establishing email server to be used by the app.
     """
     msg = Message(subject, sender=sender, recipients=recipients)
     msg.body = text_body
     msg.html = html_body
-    mail.send(msg)
+    Thread(target=send_async_email, args=(app, msg)).start()
 
 def send_password_reset_email(user):
     token = user.get_reset_password_token()
